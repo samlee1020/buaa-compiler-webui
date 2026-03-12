@@ -1,0 +1,6 @@
+int main() {
+    int a = 7, b = 13;
+    int c = a * b;
+    printf("%d\n", c);
+    return 0;
+}

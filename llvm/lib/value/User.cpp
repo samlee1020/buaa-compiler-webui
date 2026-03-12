@@ -1,0 +1,61 @@
+#include "User.hpp"
+#include "IrForward.hpp"
+#include "Use.hpp"
+
+void User::AddOperand(ValuePtr value) {
+    AddUse(value);
+    value->AddUser(this);
+}
+
+ValuePtr User::RemoveOperand(ValuePtr value) {
+    ValuePtr old = RemoveUse(value);
+    if (old) {
+        old->RemoveUser(this);
+    }
+    return old;
+}
+
+ValuePtr User::ReplaceOperand(ValuePtr oldValue, ValuePtr newValue) {
+    ValuePtr old = ReplaceUse(oldValue, newValue);
+    if (old) {
+        old->RemoveUser(this);
+        newValue->AddUser(this);
+    }
+    return old;
+}
+
+ValuePtr User::OperandAt(int index) { 
+    return _useList[index]->GetValue(); 
+}
+
+int User::OperandCount() const { 
+    return _useList.size(); 
+}
+
+void User::AddUse(ValuePtr use) { 
+    _useList.push_back(Use::New(this, use)); 
+}
+
+ValuePtr User::RemoveUse(ValuePtr use) {
+    for (auto it = _useList.begin(); it != _useList.end(); ++it) {
+        if ((*it)->GetValue() == use) {
+            _useList.erase(it);
+            return use;
+        }
+    }
+    return nullptr;
+}
+
+ValuePtr User::ReplaceUse(ValuePtr oldValue, ValuePtr newValue) {
+    for (auto it = _useList.begin(); it != _useList.end(); ++it) {
+        if ((*it)->GetValue() == oldValue) {
+            if (newValue) {
+                *it = Use::New(this, newValue);
+            } else {
+                _useList.erase(it);
+            }
+            return oldValue;
+        }
+    }
+    return nullptr;
+}

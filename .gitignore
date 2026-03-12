@@ -1,0 +1,24 @@
+# 构建产物
+build/
+frontend/dist/
+frontend/node_modules/
+
+# 临时文件
+temp_testfile.txt
+llvm_ir.txt
+mips.txt
+symbol.txt
+error.txt
+backend.pid
+frontend.pid
+lib.ll
+out.ll
+
+# 编辑器和IDE文件
+.vscode/
+*.swp
+*.swo
+*.DS_Store
+
+# 日志文件
+*.log
