@@ -22,7 +22,7 @@
 ### 1. 克隆项目
 
 ```bash
-git clone https://github.com/your-username/compiler-web.git
+git clone https://github.com/samlee1020/buaa-compiler-webui.git
 cd compiler-web
 ```
 
