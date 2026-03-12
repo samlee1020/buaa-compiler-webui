@@ -23,7 +23,7 @@
 
 ```bash
 git clone https://github.com/samlee1020/buaa-compiler-webui.git
-cd compiler-web
+cd buaa-compiler-webui
 ```
 
 ### 2. 安装依赖
