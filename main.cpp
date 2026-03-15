@@ -40,8 +40,15 @@ void stableSortAndWrite(std::ostringstream& source, std::ostream& dest) {
     }
 }
 
-int main() {
+int main(int argc, char* argv[]) {
     OPTIMIZE = false; // 是否开启优化
+    
+    // 解析命令行参数
+    for (int i = 1; i < argc; i++) {
+        if (std::string(argv[i]) == "--optimize" || std::string(argv[i]) == "-o") {
+            OPTIMIZE = true;
+        }
+    }
 
     std::ifstream fileStream;
     std::ofstream symbolStream;

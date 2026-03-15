@@ -12,8 +12,14 @@ app.post('/api/compile', (req, res) => {
     // 写入临时文件
     fs.writeFileSync('./temp_testfile.txt', req.body.code);
     
+    // 构建编译命令
+    let compileCommand = './build/Compiler';
+    if (req.body.optimize) {
+      compileCommand += ' --optimize';
+    }
+    
     // 执行编译器
-    execSync('./build/Compiler');
+    execSync(compileCommand);
     
     // 读取输出文件
     const llvmIR = fs.readFileSync('./llvm_ir.txt', 'utf8');
