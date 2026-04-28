@@ -21,8 +21,9 @@ npm run build
 
 ## Deployment
 
-This project is designed for static deployment platforms such as Vercel.
+This project is designed for static deployment platforms such as Vercel and Cloudflare.
 
 Online demo:
 
-[BUAA Compiler Web UI Demo](https://samlee-buaa-compiler-webui-p27wfqimz-samlee1020s-projects.vercel.app/)
+- [Vercel Demo](https://samlee-buaa-compiler-webui-p27wfqimz-samlee1020s-projects.vercel.app/)
+- [Cloudflare Demo](https://buaa-compiler-webui.samlee1020.workers.dev)
